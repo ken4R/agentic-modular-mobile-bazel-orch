@@ -10,9 +10,9 @@ PARENT="$(dirname "$HERE")"
 TEMPLATE="mobile-poc-template"
 
 declare -A REPOS=(
-  [A]="mobile-poc-a-gradle-bazel-orchestrator"
-  [B]="mobile-poc-b-bazel-full"
-  [C]="mobile-poc-c-gradle-spm"
+  [A]="agentic-modular-mobile-bazel-orch"
+  [B]="agentic-modular-mobile-bazel-full"
+  [C]="agentic-modular-mobile-grade-spm"
 )
 
 echo "== 1. Template $ORG/$TEMPLATE"
