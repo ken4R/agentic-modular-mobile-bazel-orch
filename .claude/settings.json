@@ -1,4 +1,5 @@
 {
+  "cleanupPeriodDays": 7,
   "permissions": {
     "allow": [
       "Bash(./gradlew:*)",
@@ -10,11 +11,23 @@
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(grep:*)",
+      "Bash(tail:*)",
+      "Bash(head:*)"
     ],
     "deny": [
       "Bash(git push:*)",
       "Bash(rm -rf:*)",
+      "Bash(./gradlew:*--info*)",
+      "Bash(./gradlew:*--debug*)",
+      "Bash(./gradlew:*--stacktrace*)",
+      "Bash(bazel:*--verbose_failures*)",
+      "Read(build/**)",
+      "Read(**/build/**)",
+      "Read(bazel-*/**)",
+      "Read(**/*.xcodeproj/**)",
+      "Read(**/DerivedData/**)",
       "Edit(scripts/bench/**)",
       "Edit(.claude/skills/**)"
     ]
