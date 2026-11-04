@@ -1,0 +1,12 @@
+.gradle/
+build/
+**/build/
+bazel-*
+.idea/
+*.iml
+DerivedData/
+.build/
+*.xcuserstate
+local.properties
+.env
+bench/results-*.json
