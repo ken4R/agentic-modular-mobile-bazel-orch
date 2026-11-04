@@ -53,3 +53,32 @@ Une tâche est terminée quand :
 - Modifier `scripts/bench/` ou `.claude/skills/` dans ce repo (ils appartiennent au template).
 - Désactiver un test ou une règle Konsist pour faire passer un build.
 - Changer d'approche de build (voir interdits spécifiques dans `CLAUDE.md`).
+
+## Économie de contexte et fiabilité
+
+Objectif : minimiser les tokens consommés sans sacrifier la fiabilité.
+
+### Lecture
+- Ne lire un fichier que si la tâche l'exige. Jamais `cat` d'un dossier entier ni de fichiers générés (`build/`, `bazel-*`, `*.xcodeproj`, lockfiles).
+- Pour les gros fichiers, lire par plage de lignes ou via `grep -n` d'abord.
+- Les skills chargent leurs `references/` à la demande : ne lire que celle de l'approche courante.
+- Ne pas relire un fichier déjà lu dans la session sauf s'il a été modifié.
+
+### Commandes
+- Toujours rediriger les sorties volumineuses : `./gradlew ... -q 2>&1 | tail -40`, `bazel build ... 2>&1 | grep -E "ERROR|error:|FAILED" | head -30`, `xcodebuild ... 2>&1 | grep -E "error:|warning: .*deprecated|BUILD" | head -30`.
+- Jamais de `--info`, `--debug`, `--stacktrace` ou `-s` sauf pour diagnostiquer une erreur précise, et alors filtrer avec `grep`.
+- Une seule tentative de build après une correction. Si ça échoue deux fois de suite sur la même erreur, s'arrêter, résumer le problème en 5 lignes et demander.
+
+### Travail par étapes
+- Une étape du plan = un commit. Terminer et commiter avant de passer à la suivante.
+- Avant chaque étape, annoncer en 2 lignes ce qui va être fait. Pas de récapitulatif long en fin d'étape : le commit fait foi.
+- Pas de réécriture complète d'un fichier pour une modification locale : éditer la zone concernée.
+
+### Fiabilité
+- Ne jamais deviner une API ou une version : lire `libs.versions.toml`, ou la doc officielle si un outil de recherche est disponible, sinon demander.
+- Ne jamais désactiver un test, une règle Konsist ou un warning pour faire passer un build.
+- Si une commande ou un outil est absent (bazel, xcodebuild, simulateur), le dire immédiatement plutôt que de contourner.
+- Vérifier la définition de "done" avant de déclarer une tâche terminée.
+
+### Mesure
+- À la fin de chaque session, relever `/cost` et noter dans `docs/frictions.md` : date, étape du plan, tokens, nombre d'interventions humaines.

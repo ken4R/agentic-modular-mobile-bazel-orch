@@ -138,6 +138,8 @@ Livrable : mesures + estimation du coût annuel de maintien de la règle Kotlin/
 | Montée de version Kotlin | temps vers la version suivante | | | |
 | Expérience IDE | autocomplétion, debug KMP depuis Xcode, note /5 | | | |
 | Lignes de configuration | `wc -l` Gradle + Starlark + `Package.swift` | | | |
+| Tokens consommés (semaine 1) | `/cost` en fin de session, somme notée dans `docs/frictions.md` | | | |
+| Interventions humaines (semaine 1) | nombre de corrections manuelles, journal | | | |
 | Frictions rencontrées | journal qualitatif | | | |
 
 ---
