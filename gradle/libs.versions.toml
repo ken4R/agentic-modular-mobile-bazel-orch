@@ -9,10 +9,13 @@ ktor = "3.1.0"
 sqldelight = "2.1.0"
 koin = "4.1.0"
 coroutines = "1.10.0"
-skie = "0.10.0"
+skie = "0.10.6" # POC C : 0.10.0 ne supporte pas Kotlin 2.2.0 — à remonter au template
 konsist = "0.17.0"
 detekt = "1.23.8"
 mvikotlin = "4.3.0"
+# POC C : ajouts à remonter au template
+activity = "1.10.1"
+navigation = "2.9.0"
 
 [libraries]
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
@@ -32,6 +35,15 @@ mvikotlin = { module = "com.arkivanov.mvikotlin:mvikotlin", version.ref = "mviko
 mvikotlin-main = { module = "com.arkivanov.mvikotlin:mvikotlin-main", version.ref = "mvikotlin" }
 konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+# POC C : ajouts à remonter au template (artefacts Compose versionnés par le BOM)
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
